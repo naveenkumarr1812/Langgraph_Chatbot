@@ -3,7 +3,7 @@ from __future__ import annotations
 import os
 import sqlite3
 import tempfile
-from typing import Annotated, Any, Dict, Optional, TypedDict
+from typing import Annotated, Any, Dict, List, Optional, Tuple, TypedDict
 
 from dotenv import load_dotenv
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -69,7 +69,7 @@ def _verify_password(password: str, stored: str) -> bool:
         return False
 
 
-def register_user(username: str, password: str) -> tuple[bool, str]:
+def register_user(username: str, password: str) -> Tuple[bool, str]:
     """Returns (success, message)."""
     username = username.strip().lower()
     if not username or not password:
@@ -90,7 +90,7 @@ def register_user(username: str, password: str) -> tuple[bool, str]:
         conn.close()
 
 
-def login_user(username: str, password: str) -> tuple[bool, str]:
+def login_user(username: str, password: str) -> Tuple[bool, str]:
     """Returns (success, message)."""
     username = username.strip().lower()
     conn = _get_auth_conn()
@@ -123,7 +123,7 @@ def save_user_thread(username: str, thread_id: str, title: str = "New Chat") -> 
         conn.close()
 
 
-def get_user_threads(username: str) -> list[dict]:
+def get_user_threads(username: str) -> List[dict]:
     """Return list of {thread_id, title} for a user, newest first."""
     conn = _get_auth_conn()
     try:
