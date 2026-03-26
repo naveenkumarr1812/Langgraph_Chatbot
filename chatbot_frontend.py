@@ -25,7 +25,7 @@ def show_auth_page():
     col1, col2, col3 = st.columns([1, 1.2, 1])
     with col2:
         st.markdown("<br><br>", unsafe_allow_html=True)
-        st.title("🤖 QueryBot")
+        st.title("QueryBot")
         st.caption("Your personal AI assistant with PDF, web search & calculator.")
         st.markdown("<br>", unsafe_allow_html=True)
 
